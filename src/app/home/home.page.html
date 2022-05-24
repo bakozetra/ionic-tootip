@@ -1,21 +1,21 @@
 <ion-content [fullscreen]="true">
- <p>{{dataArray}}</p>
-
-<ion-text id="hover-button"
->{{dataText}}</ion-text>
-<ion-popover 
-trigger="hover-button" 
-[dismissOnSelect]="true" 
-triggerAction="hover"
->
-  <ng-template>
-    <ion-content>
-      <ion-list>
-        <ion-item [button]="true" [detail]="false">
-          <ion-label>Option 1</ion-label>
-        </ion-item>
-      </ion-list>
-    </ion-content>
-  </ng-template>
-</ion-popover>
+  <p>{{dataArray}}</p>
+  
+  <ion-text id="hove-button" *ngFor="let s of sentences">
+    <span id =`${{s.id}}`>{{ s.value }}
+    </span>
+    <ion-popover trigger=`${{s.id}}` 
+    [dismissOnSelect]="true" triggerAction="hover"
+    showBackdrop = 'false'>
+      <ng-template>
+        <ion-content>
+          <ion-list>
+            <ion-item [button]="true" [detail]="false">
+              <ion-label>{{s.id}}</ion-label>
+            </ion-item>
+          </ion-list>
+        </ion-content>
+      </ng-template>
+    </ion-popover>
+  </ion-text>
 </ion-content>

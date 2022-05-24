@@ -1,6 +1,11 @@
 import { Component } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
+interface SentenceData {
+  id: string,
+   value:string, 
+   selected: boolean
+}
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -9,6 +14,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class HomePage {  
   li: any;
   dataText = "";
+  sentences : SentenceData[] = [] 
   constructor(private http: HttpClient) {
     console.log('http::::::');
   }
@@ -24,15 +30,25 @@ export class HomePage {
         responseType: 'text' as const,
       })
       .subscribe(async (response: any) => {
-       
         if (response) {
           // hideloader();
         }
         console.log(response);
-        this.dataText = response;
-      });
+        this.dataText = response; 
+        this.sentences = this.processText(this.dataText)
+      });      
     function hideloader() {
       document.getElementById('loading').style.display = 'none';
     }
+  }
+
+  processText (text) {
+    const sentences = text.split('.')
+        .map(sentence => `${sentence}.`)
+        .map((sentence, index) => {
+        return { id: index, value: sentence, selected: false }
+      }) 
+    console.log(sentences , 'sentences')
+    return sentences
   }
 }
