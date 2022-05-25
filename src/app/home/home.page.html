@@ -1,21 +1,14 @@
 <ion-content [fullscreen]="true">
   <p>{{dataArray}}</p>
-  
+
   <ion-text id="hove-button" *ngFor="let s of sentences">
-    <span id =`${{s.id}}`>{{ s.value }}
+    <span (click)="onSelectSentences(s.id)" 
+    matTooltip ="{{s.id}}"
+    id=`${{s.id}}`>{{s.value }}
     </span>
-    <ion-popover trigger=`${{s.id}}` 
-    [dismissOnSelect]="true" triggerAction="hover"
-    showBackdrop = 'false'>
-      <ng-template>
-        <ion-content>
-          <ion-list>
-            <ion-item [button]="true" [detail]="false">
-              <ion-label>{{s.id}}</ion-label>
-            </ion-item>
-          </ion-list>
-        </ion-content>
-      </ng-template>
-    </ion-popover>
   </ion-text>
+  <ion-text *ngFor ="let select of selectedSentences">
+    <span>{{select.value}}</span>
+  </ion-text>
+
 </ion-content>
