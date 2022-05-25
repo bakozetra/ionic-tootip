@@ -1,14 +1,30 @@
-<ion-content [fullscreen]="true">
-  <p>{{dataArray}}</p>
+<ion-header collapse="fade">
+  <ion-toolbar>
+    <ion-title>Word count with tooltip</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true" class="container">
+  <div class="content">
+    <div>
+      <ion-button (click)="ionViewDidEnter()">Generate text</ion-button>
+    </div>
+    <ion-text id="hove-button" *ngFor="let s of sentences">
+      <span *ngIf="s.selected; else normal" class="words-color" (click)="onSelectSentences(s.id)"
+        matTooltip="words:{{wordsCount}}" [matTooltipShowDelay]="showDelay.value" (mouseenter)="mouseEnter($event)"
+        id=`${{s.id}}`>{{s.value }}
+      </span>
+      <ng-template #normal> <span (click)="onSelectSentences(s.id)" matTooltip="words:{{wordsCount}}"
+          [matTooltipShowDelay]="showDelay.value" (mouseenter)="handlesentenceHover($event)" id=`${{s.id}}`>{{s.value }}
+        </span></ng-template>
+    </ion-text>
+    <ion-text>
+      <h2>Selected:</h2>
+    </ion-text>
+    <ion-text *ngFor="let s of sentences">
+      <span *ngIf="s.selected;" (click)="onSelectSentences(s.id)" matTooltip="words:{{wordsCount}}"
+        [matTooltipShowDelay]="showDelay.value" (mouseenter)="mouseEnter($event)" id=`${{s.id}}`>{{s.value }}
+      </span>
+    </ion-text>
 
-  <ion-text id="hove-button" *ngFor="let s of sentences">
-    <span (click)="onSelectSentences(s.id)" 
-    matTooltip ="{{s.id}}"
-    id=`${{s.id}}`>{{s.value }}
-    </span>
-  </ion-text>
-  <ion-text *ngFor ="let select of selectedSentences">
-    <span>{{select.value}}</span>
-  </ion-text>
-
+  </div>
 </ion-content>

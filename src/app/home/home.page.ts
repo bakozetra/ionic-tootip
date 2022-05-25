@@ -1,29 +1,26 @@
-import { Component,Directive } from '@angular/core';
+import { Component} from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { FormControl } from '@angular/forms';
 
 interface SentenceData {
   id: string,
   value: string,
   selected: boolean
 }
-@Directive({
-  selector: '[tooltip]',
-  exportAs: 'tooltip'
-})
-
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage  {
-  li: any;
+export class HomePage {
   dataText = "";
   sentences: SentenceData[] = [];
-  selectedSentences : SentenceData[] = []
+  showDelay = new FormControl(1000);
+  wordsCount = 0
   
   constructor(private http: HttpClient) {
   }
+
   ngOnInit(): void {
     const headers = new HttpHeaders().set(
       'Content-Type',
@@ -38,10 +35,8 @@ export class HomePage  {
         if (response) {
           // hideloader();
         }
-        console.log(response);
         this.dataText = response;
         this.sentences = this.processText(this.dataText)
-        let test = this.sentences.filter(sentence => sentence.selected)        
       });
     function hideloader() {
       document.getElementById('loading').style.display = 'none';
@@ -54,26 +49,30 @@ export class HomePage  {
       .map((sentence, index) => {
         return { id: index, value: sentence, selected: false }
       })
-    console.log(sentences, 'sentences')
     return sentences
   }
 
   onSelectSentences = (id) => {
-    console.log(id , 'id')
     const updatedSSentencesSelection = this.sentences.map(sentence => {
       if (sentence.id === id) {
         const updateSelect = { ...sentence, selected: !sentence.selected }
-        console.log(updateSelect , 'updateSelect')
         return updateSelect
       } else {
         return sentence
       }
     }
     )
-    this.sentences = updatedSSentencesSelection 
+    this.sentences = updatedSSentencesSelection
+  }
+  handlesentenceHover(event: any) {
+    const sentenceText = event.target.innerText
+    const countWords = sentenceText.trim().split(' ').length
+    this.wordsCount = countWords
   }
 
-
+  ionViewDidEnter(){
+   return this.ngOnInit()
+}
 }
 
 
