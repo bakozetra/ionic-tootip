@@ -10,7 +10,7 @@
     </div>
     <ion-text id="hove-button" *ngFor="let s of sentences">
       <span *ngIf="s.selected; else normal" class="words-color" (click)="onSelectSentences(s.id)"
-        matTooltip="words:{{wordsCount}}" [matTooltipShowDelay]="showDelay.value" (mouseenter)="mouseEnter($event)"
+        matTooltip="words:{{wordsCount}}" [matTooltipShowDelay]="showDelay.value" (mouseenter)="handlesentenceHover($event)"
         id=`${{s.id}}`>{{s.value }}
       </span>
       <ng-template #normal> <span (click)="onSelectSentences(s.id)" matTooltip="words:{{wordsCount}}"
@@ -22,7 +22,7 @@
     </ion-text>
     <ion-text *ngFor="let s of sentences">
       <span *ngIf="s.selected;" (click)="onSelectSentences(s.id)" matTooltip="words:{{wordsCount}}"
-        [matTooltipShowDelay]="showDelay.value" (mouseenter)="mouseEnter($event)" id=`${{s.id}}`>{{s.value }}
+        [matTooltipShowDelay]="showDelay.value" (mouseenter)="handlesentenceHover($event)" id=`${{s.id}}`>{{s.value }}
       </span>
     </ion-text>
 
