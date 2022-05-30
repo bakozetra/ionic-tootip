@@ -15,9 +15,7 @@ interface SentenceData {
 export class HomePage {
   dataText = "";
   sentences: SentenceData[] = [];
-  showDelay = new FormControl(1000);
   wordsCount = 0
-  
   constructor(private http: HttpClient) {
   }
 
