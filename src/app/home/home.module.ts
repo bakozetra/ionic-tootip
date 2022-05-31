@@ -7,6 +7,8 @@ import { HomePage } from './home.page';
 import { HomePageRoutingModule } from './home-routing.module';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { TooltipDirective } from '../tooltip/tooltip.directive';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -16,6 +18,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     MatTooltipModule,
     NgbModule
   ],
-  declarations: [HomePage]
+  declarations: [HomePage,TooltipDirective]
 })
 export class HomePageModule {}

@@ -8,33 +8,31 @@
     <div>
       <ion-button (click)="ionViewDidEnter()">Generate text</ion-button>
     </div>
-    <ion-text id="hove-button" *ngFor="let s of sentences">
-      <span *ngIf="s.selected; else normal" class="words-color" (click)="onSelectSentences(s.id)"
-        ngbTooltip="Bootstrap Tooltip on Rigth"
-        (mouseenter)="handlesentenceHover($event)"
-        id=`${{s.id}}`>{{s.value }}
-        [openDelay]="1000"
-      </span>
-      <ng-template #normal> <span (click)="onSelectSentences(s.id)"
-        ngbTooltip="words:{{wordsCount}}"
-        [openDelay]="1000"
-        (mouseenter)="handlesentenceHover($event)" id=`${{s.id}}`>{{s.value }}
-        </span></ng-template>
+    <ion-text id="hove-button" *ngFor="let s of sentences"
+    (mouseenter)="handlesentenceHover($event)" 
+    >
+    <span  (click)="onSelectSentences(s.id)"
+    [tooltip]="'count words'"
+    defaultColor ={{wordsCount}}
+    >{{s.value }}
+    </span>
+    <ng-template #normal> 
+      <span
+      (click)="onSelectSentences(s.id)"
+      [tooltip]="'count words'"
+      defaultColor ={{wordsCount}}
+      id=`${{s.id}}`>{{s.value }}
+      </span></ng-template>
     </ion-text>
     <ion-text>
       <h2>Selected:</h2>
     </ion-text>
     <ion-text *ngFor="let s of sentences">
-
       <span *ngIf="s.selected;
       "(click)="onSelectSentences(s.id)"
         (mouseenter)="handlesentenceHover($event)" 
-        ngbTooltip="words:{{wordsCount}}"
-        [openDelay]="1000"
-
         id=`${{s.id}}`>{{s.value }}
       </span>
     </ion-text>
-
   </div>
 </ion-content>

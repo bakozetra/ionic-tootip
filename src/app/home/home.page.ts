@@ -1,4 +1,4 @@
-import { Component} from '@angular/core';
+import { Component, HostListener, ViewChild} from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { FormControl } from '@angular/forms';
 
@@ -15,7 +15,9 @@ interface SentenceData {
 export class HomePage {
   dataText = "";
   sentences: SentenceData[] = [];
-  wordsCount = 0
+  wordsCount = 0;
+  followTooltipVisible = false;
+  
   constructor(private http: HttpClient) {
   }
 
@@ -66,11 +68,25 @@ export class HomePage {
     const sentenceText = event.target.innerText
     const countWords = sentenceText.trim().split(' ').length
     this.wordsCount = countWords
+
+  }
+  handleSentenceMouseEnter() {
+   this.followTooltipVisible = true
+  }
+  handleSentenceMouseLeave() {
+    this.followTooltipVisible = false 
   }
 
   ionViewDidEnter(){
    return this.ngOnInit()
 }
+// @ViewChild("cursor") refCursor: any;
+// @HostListener('document: mousemove', ['$event'])
+//   onMouseMove(event: any) {
+//     let styles = this?.refCursor?.nativeElement?.style;
+//     styles.left = event.pageX + 'px';
+//     styles.top= event.pageY + 'px';
+//   }
 }
 
 
