@@ -4,18 +4,13 @@
     width: 50%;
   margin: auto;
   }
-}
-
-.words-color {
-  color:rgb(12, 187, 187);
-  display:inline-block 
-}
-.words {
-  line-height: 3;
-  display:inline-block 
-}
-.tooltip-inner {
-  max-width: 95%;
-	text-align: left;
+  #hove-button {
+     span:hover {
+       background-color: aqua;
+     }
+     .wordsSelect {
+      color:rgb(12, 187, 187);
+    }
+  }
 }
 

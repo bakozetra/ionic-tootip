@@ -1,6 +1,6 @@
-import { Component, HostListener, ViewChild} from '@angular/core';
+import { Component} from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { FormControl } from '@angular/forms';
+
 
 interface SentenceData {
   id: string,
@@ -80,13 +80,6 @@ export class HomePage {
   ionViewDidEnter(){
    return this.ngOnInit()
 }
-// @ViewChild("cursor") refCursor: any;
-// @HostListener('document: mousemove', ['$event'])
-//   onMouseMove(event: any) {
-//     let styles = this?.refCursor?.nativeElement?.style;
-//     styles.left = event.pageX + 'px';
-//     styles.top= event.pageY + 'px';
-//   }
 }
 
 
