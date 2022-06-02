@@ -3,7 +3,12 @@
     <ion-title>Word count with tooltip</ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-content [fullscreen]="true" class="container">
+<ion-content 
+[fullscreen]="true"
+ class="container"
+ [scrollEvents]="true" 
+ (ionScroll)="ionScrolling()"
+ >
   <div class="content">
     <div>
       <ion-button (click)="ionViewDidEnter()">Generate text</ion-button>
@@ -17,6 +22,7 @@
       <ng-template #normal> <span  
       (click)="onSelectSentences(s.id)"
       (mouseenter)="handlesentenceHover($event)"
+       
       [tooltip]="'count words'"
       wordsNumber="{{wordsCount}}"
       id=`${{s.id}}`>{{s.value }}
