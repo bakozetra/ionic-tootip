@@ -3,38 +3,42 @@
     <ion-title>Word count with tooltip</ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-content 
-[fullscreen]="true"
- class="container"
- [scrollEvents]="true" 
- (ionScroll)="ionScrolling()"
- >
+<ion-content
+  [fullscreen]="true"
+  class="container"
+  [scrollEvents]="true"
+  (ionScroll)="ionScrolling()"
+>
   <div class="content">
     <div>
       <ion-button (click)="ionViewDidEnter()">Generate text</ion-button>
     </div>
+
     <ion-text id="hove-button" *ngFor="let s of sentences">
-      <span *ngIf="s.selected; else normal" style="color:rgb(12, 187, 187);" 
-      (mouseenter)="handlesentenceHover($event)"
-      (click)="onSelectSentences(s.id)"
-      id=`${{s.id}}`>{{s.value }}
+      <span
+        *ngIf="s.selected; else normal"
+        style="color: rgb(12, 187, 187)"
+        (mouseenter)="handlesentenceHover($event)"
+        (click)="onSelectSentences(s.id)"
+        id="`${{s.id}}`"
+        >{{s.value }}
       </span>
-      <ng-template #normal> <span  
-      (click)="onSelectSentences(s.id)"
-      (mouseenter)="handlesentenceHover($event)"
-       
-      [tooltip]="'count words'"
-      wordsNumber="{{wordsCount}}"
-      id=`${{s.id}}`>{{s.value }}
-      </span></ng-template>
+      <ng-template #normal>
+        <span
+          (click)="onSelectSentences(s.id)"
+          (mouseenter)="handlesentenceHover($event)"
+          [tooltip]="'count words'"
+          wordsNumber="{{wordsCount}}"
+          id="`${{s.id}}`"
+          >{{s.value }}
+        </span></ng-template
+      >
     </ion-text>
     <ion-text>
       <h2>Selected:</h2>
     </ion-text>
-    <ion-text *ngFor ="let s of sentences">
-      <span *ngIf="s.selected;" (click)="onSelectSentences(s.id)"
-      id=`${{s.id}}`>{{s.value }}
-      </span>
+    <ion-text *ngFor="let s of sentences">
+      <span *ngIf="s.selected;" id="`${{s.id}}`">{{s.value }} </span>
     </ion-text>
   </div>
 </ion-content>

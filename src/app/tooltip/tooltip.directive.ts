@@ -1,10 +1,5 @@
-import {
-  Directive,
-  ElementRef,
-  HostListener,
-  Input,
-  OnDestroy,
-} from '@angular/core';
+import { Directive, HostListener, Input, OnDestroy } from '@angular/core';
+import { Platform } from '@ionic/angular';
 @Directive({
   selector: '[tooltip]',
 })
@@ -14,24 +9,65 @@ export class TooltipDirective implements OnDestroy {
   @Input() wordsNumber = '';
   private myPopup;
   private timer;
-  constructor() {}
+  private longPressTimer;
+  private longPressDelay = 2000;
+
+  constructor(public platform: Platform) {}
   ngOnDestroy(): void {
     if (this.myPopup) {
       this.myPopup.remove();
     }
   }
+
   @HostListener('mouseenter', ['$event']) onMouseEnter(e) {
+    const isDesktop = this.platform.is('desktop');
+    if (!isDesktop) {
+      return;
+    }
     this.timer = setTimeout(() => {
       let x = e.clientX + 10; //x position within the element.
       let y = e.clientY + 10;
       this.createTooltipPopup(x, y);
     }, this.delay);
   }
+
   @HostListener('mouseleave') onMouseLeave() {
     if (this.timer) clearTimeout(this.timer);
     if (this.myPopup) {
       this.myPopup.remove();
     }
+  }
+
+  @HostListener('mousedown') onMouseDown(e) {
+    const isMobile = this.platform.is('desktop')
+    if(isMobile) {
+      return
+    }
+    this.longPressTimer = setTimeout(() => {
+      let x = e.clientX + 10; //x position within the element.
+      let y = e.clientY + 10;
+      this.createTooltipPopup(x, y);
+    }, this.longPressDelay);
+  }
+
+  @HostListener('pointerdown', ['$event']) onPointerDown(e) {
+    const isDesktop = this.platform.is('desktop');
+    if(isDesktop) {
+      return
+    }
+    this.longPressTimer = setTimeout(() => {
+      let x = e.clientX + 10;
+      let y = e.clientY + 10;
+      this.createTooltipPopup(x, y);
+    }, this.longPressDelay);
+  }
+
+  @HostListener('mouseup') onMouseUp() {
+    if (this.longPressTimer) clearTimeout(this.longPressTimer);
+  }
+
+  @HostListener('pointerup') onPointerUp() {
+    if (this.longPressTimer) clearTimeout(this.longPressTimer);
   }
 
   @HostListener('document: mousemove', ['$event']) onMouseMove(e) {
@@ -54,8 +90,5 @@ export class TooltipDirective implements OnDestroy {
     popup.style.position = 'absolute';
     document.body.appendChild(popup);
     this.myPopup = popup;
-    // setTimeout(() => {
-    //   if (this.myPopup) this.myPopup.remove();
-    // },2500); // Remove tooltip after 5 seconds
   }
 }

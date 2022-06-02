@@ -8,6 +8,8 @@ import { HomePageRoutingModule } from './home-routing.module';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TooltipDirective } from '../tooltip/tooltip.directive';
+import { LongPressModule } from 'ionic-long-press';
+
 
 @NgModule({
   imports: [
@@ -16,7 +18,8 @@ import { TooltipDirective } from '../tooltip/tooltip.directive';
     IonicModule,
     HomePageRoutingModule,
     MatTooltipModule,
-    NgbModule
+    NgbModule,
+    LongPressModule
   ],
   declarations: [HomePage,TooltipDirective]
 })
