@@ -1,8 +1,9 @@
 <ion-header collapse="fade">
   <ion-toolbar>
-    <ion-title>Word count with tooltip</ion-title>
+    <ion-title>{{ "HOME.title" | translate }}</ion-title>
   </ion-toolbar>
 </ion-header>
+
 <ion-content
   [fullscreen]="true"
   class="container"
@@ -10,10 +11,23 @@
   (ionScroll)="ionScrolling()"
 >
   <div class="content">
+    <ion-list>
+      <ion-item>
+        <ion-select
+          placeholder="Select One"
+          [(ngModel)]="selectedLanguage"
+          (ionChange)="languageChanged()"
+        >
+          <ion-select-option value="en">English</ion-select-option>
+          <ion-select-option value="nor">Norwegian</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
     <div>
-      <ion-button (click)="ionViewDidEnter()">Generate text</ion-button>
+      <ion-button (click)="ionViewDidEnter()"
+        >{{ "HOME.buttonText" | translate }}</ion-button
+      >
     </div>
-
     <ion-text id="hove-button" *ngFor="let s of sentences">
       <span
         *ngIf="s.selected; else normal"
@@ -27,15 +41,15 @@
         <span
           (click)="onSelectSentences(s.id)"
           (mouseenter)="handlesentenceHover($event)"
-          [tooltip]="'count words'"
-          wordsNumber="{{wordsCount}}"
+          [tooltip]="tooltipText"
+          wordsNumber=" {{wordsCount}}"
           id="`${{s.id}}`"
           >{{s.value }}
         </span></ng-template
       >
     </ion-text>
     <ion-text>
-      <h2>Selected:</h2>
+      <h2>{{ "HOME.selectedTitle" | translate }} :</h2>
     </ion-text>
     <ion-text *ngFor="let s of sentences">
       <span *ngIf="s.selected;" id="`${{s.id}}`">{{s.value }} </span>

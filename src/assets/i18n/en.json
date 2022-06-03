@@ -1,0 +1,9 @@
+{
+    "HOME": {
+        "title": "Word count with tooltip",
+        "text": "This is random text to show translation in application",
+        "buttonText" : "Generate text",
+        "selectedTitle": "selected",
+        "tooltipText":"Count words"
+    }
+}

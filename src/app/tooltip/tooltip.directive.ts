@@ -39,9 +39,9 @@ export class TooltipDirective implements OnDestroy {
   }
 
   @HostListener('mousedown') onMouseDown(e) {
-    const isMobile = this.platform.is('desktop')
-    if(isMobile) {
-      return
+    const isMobile = this.platform.is('desktop');
+    if (isMobile) {
+      return;
     }
     this.longPressTimer = setTimeout(() => {
       let x = e.clientX + 10; //x position within the element.
@@ -52,8 +52,8 @@ export class TooltipDirective implements OnDestroy {
 
   @HostListener('pointerdown', ['$event']) onPointerDown(e) {
     const isDesktop = this.platform.is('desktop');
-    if(isDesktop) {
-      return
+    if (isDesktop) {
+      return;
     }
     this.longPressTimer = setTimeout(() => {
       let x = e.clientX + 10;

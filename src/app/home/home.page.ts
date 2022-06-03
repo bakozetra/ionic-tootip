@@ -1,11 +1,14 @@
 import { Component } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { TranslateConfigService } from '../translate-config.service';
+import { PopoverController } from '@ionic/angular';
 
 interface SentenceData {
   id: string;
   value: string;
   selected: boolean;
 }
+
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -16,7 +19,15 @@ export class HomePage {
   sentences: SentenceData[] = [];
   wordsCount = 0;
   followTooltipVisible = false;
-  constructor(private http: HttpClient) {}
+  tooltipText = '';
+  selectedLanguage: string;
+  constructor(
+    private http: HttpClient,
+    private translateConfigService: TranslateConfigService,
+    public popoverCtrl: PopoverController
+  ) {
+    this.selectedLanguage = this.translateConfigService.getDefaultLanguage();
+  }
 
   ngOnInit(): void {
     this.sentences = this
@@ -47,9 +58,13 @@ export class HomePage {
         this.dataText = response;
         this.sentences = this.processText(this.dataText);
       });
-    function hideloader() {
-      document.getElementById('loading').style.display = 'none';
-    }
+
+    this.translateConfigService
+      .getTranslation('HOME.tooltipText')
+      .toPromise()
+      .then((val) => {
+        this.tooltipText = val;
+      });
   }
 
   processText(text) {
@@ -93,5 +108,14 @@ export class HomePage {
     let existingTooltip = document
       .querySelectorAll('#tooltip-id')
       .forEach((el) => el.remove());
+  }
+  languageChanged() {
+    this.translateConfigService.setLanguage(this.selectedLanguage);
+    this.translateConfigService
+      .getTranslation('HOME.tooltipText')
+      .toPromise()
+      .then((val) => {
+        this.tooltipText = val;
+      });
   }
 }
