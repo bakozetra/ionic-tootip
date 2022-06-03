@@ -1,7 +1,6 @@
 {
     "HOME": {
         "title": "Ordtelling med verktøytips",
-        "text": "이것은 응용 프로그램에서 번역을 보여주는 임의의 텍스트입니다",
         "buttonText" :"generere tekst",
         "selectedTitle": "valgt",
         "tooltipText":"Telle ord"

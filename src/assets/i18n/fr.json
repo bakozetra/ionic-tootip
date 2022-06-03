@@ -1,0 +1,9 @@
+
+{
+    "HOME": {
+        "title": "Nombre de mots avec info-bulle",
+        "buttonText" : "bouton générer",
+        "selectedTitle": "choisi",
+        "tooltipText":"Compter les mots"
+    }
+}
