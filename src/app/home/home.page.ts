@@ -21,6 +21,7 @@ export class HomePage {
   followTooltipVisible = false;
   tooltipText = '';
   selectedLanguage: string;
+  desktopPlatform = this.platform.is('desktop');
   constructor(
     private http: HttpClient,
     private translateConfigService: TranslateConfigService,
@@ -77,8 +78,7 @@ export class HomePage {
   }
 
   onSelectSentences = (id) => {
-    const desktopPlatform = this.platform.is('desktop');
-    if (!desktopPlatform) {
+    if (!this.desktopPlatform) {
       return;
     }
     const updatedSSentencesSelection = this.sentences.map((sentence) => {
@@ -123,5 +123,4 @@ export class HomePage {
         this.tooltipText = val;
       });
   }
-  log() {}
 }

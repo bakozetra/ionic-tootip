@@ -1,7 +1,7 @@
 <ion-header collapse="fade">
   <ion-toolbar>
     <ion-title>{{ "HOME.title" | translate }}</ion-title>
-    <ion-title> date:7th of june and version:1</ion-title>
+    <ion-title> date:8th of june and version:2</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -53,7 +53,7 @@
         </span></ng-template
       >
     </ion-text>
-    <ion-text>
+    <ion-text *ngIf="desktopPlatform">
       <h2>{{ "HOME.selectedTitle" | translate }} :</h2>
     </ion-text>
     <ion-text *ngFor="let s of sentences">

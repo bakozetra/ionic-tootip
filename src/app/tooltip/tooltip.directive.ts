@@ -38,7 +38,7 @@ export class TooltipDirective implements OnDestroy {
     }
   }
 
-  @HostListener('mousedown') onMouseDown(e) {
+  @HostListener('mousedown') onMouseDown() {
     const isdesktop = this.platform.is('desktop');
     if (!isdesktop) {
       return;
