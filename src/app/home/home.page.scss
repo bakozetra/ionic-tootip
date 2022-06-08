@@ -1,10 +1,13 @@
 .container {
   width: 100%;
   .content {
-    width: 50%;
+    width: 60%;
   margin: auto;
   }
   #hove-button {
+    span {
+      display:inline-block;
+    }
      span:hover {
        background-color: aqua;
      }
@@ -13,4 +16,3 @@
     }
   }
 }
-

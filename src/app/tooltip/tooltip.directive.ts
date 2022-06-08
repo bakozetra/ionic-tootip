@@ -10,7 +10,7 @@ export class TooltipDirective implements OnDestroy {
   private myPopup;
   private timer;
   private longPressTimer;
-  private longPressDelay = 2000;
+  private longPressDelay = 1500;
 
   constructor(public platform: Platform) {}
   ngOnDestroy(): void {
@@ -20,6 +20,7 @@ export class TooltipDirective implements OnDestroy {
   }
 
   @HostListener('mouseenter', ['$event']) onMouseEnter(e) {
+    console.log('e::::::', e);
     const isDesktop = this.platform.is('desktop');
     if (!isDesktop) {
       return;
@@ -39,8 +40,9 @@ export class TooltipDirective implements OnDestroy {
   }
 
   @HostListener('mousedown') onMouseDown(e) {
-    const isMobile = this.platform.is('desktop');
-    if (isMobile) {
+    console.log('e::::::mousedown', e);
+    const isdesktop = this.platform.is('mobile');
+    if (!isdesktop) {
       return;
     }
     this.longPressTimer = setTimeout(() => {
@@ -63,21 +65,40 @@ export class TooltipDirective implements OnDestroy {
   }
 
   @HostListener('mouseup') onMouseUp() {
+    const isDesktop = this.platform.is('desktop');
+    if (isDesktop) {
+      return;
+    }
     if (this.longPressTimer) clearTimeout(this.longPressTimer);
   }
 
   @HostListener('pointerup') onPointerUp() {
+    const isDesktop = this.platform.is('desktop');
+    if (isDesktop) {
+      return;
+    }
     if (this.longPressTimer) clearTimeout(this.longPressTimer);
   }
 
-  @HostListener('document: mousemove', ['$event']) onMouseMove(e) {
-    const x = e.clientX + 10;
-    const y = e.clientY + 10;
+  // @HostListener('document: mousemove', ['$event']) onMouseMove(e) {
+  //   console.log('e:::::mousemove:', e);
+  //   const x = e.clientX + 10;
+  //   const y = e.clientY + 10;
+  //   if (this.myPopup) {
+  //     this.myPopup.style.left = `${x}px`;
+  //     this.myPopup.style.top = `${y}px`;
+  //   }
+  // }
+
+  @HostListener('contextmenu', ['$event'])
+  onRightClick(event) {
+    if (this.timer) clearTimeout(this.timer);
     if (this.myPopup) {
-      this.myPopup.style.left = `${x}px`;
-      this.myPopup.style.top = `${y}px`;
+      this.myPopup.remove();
     }
+    event.preventDefault();
   }
+
   private createTooltipPopup(x: number, y: number) {
     if (this.myPopup) this.myPopup.remove();
     let popup = document.createElement('div');

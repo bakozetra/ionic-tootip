@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { TranslateConfigService } from '../translate-config.service';
-import { PopoverController } from '@ionic/angular';
+import { PopoverController, Platform } from '@ionic/angular';
 
 interface SentenceData {
   id: string;
@@ -24,7 +24,8 @@ export class HomePage {
   constructor(
     private http: HttpClient,
     private translateConfigService: TranslateConfigService,
-    public popoverCtrl: PopoverController
+    public popoverCtrl: PopoverController,
+    public platform: Platform
   ) {
     this.selectedLanguage = this.translateConfigService.getDefaultLanguage();
   }
@@ -32,7 +33,9 @@ export class HomePage {
   ngOnInit(): void {
     this.sentences = this.processText('');
     this.getText();
-
+    document.addEventListener('contextmenu', function (event) {
+      event.preventDefault();
+    });
     this.translateConfigService
       .getTranslation('HOME.tooltipText')
       .toPromise()
@@ -74,6 +77,10 @@ export class HomePage {
   }
 
   onSelectSentences = (id) => {
+    const desktopPlatform = this.platform.is('desktop');
+    if (!desktopPlatform) {
+      return;
+    }
     const updatedSSentencesSelection = this.sentences.map((sentence) => {
       if (sentence.id === id) {
         const updateSelect = { ...sentence, selected: !sentence.selected };
