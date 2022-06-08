@@ -123,4 +123,5 @@ export class HomePage {
         this.tooltipText = val;
       });
   }
+  log() {}
 }

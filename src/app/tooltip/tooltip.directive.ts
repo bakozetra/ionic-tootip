@@ -20,7 +20,6 @@ export class TooltipDirective implements OnDestroy {
   }
 
   @HostListener('mouseenter', ['$event']) onMouseEnter(e) {
-    console.log('e::::::', e);
     const isDesktop = this.platform.is('desktop');
     if (!isDesktop) {
       return;
@@ -40,16 +39,10 @@ export class TooltipDirective implements OnDestroy {
   }
 
   @HostListener('mousedown') onMouseDown(e) {
-    console.log('e::::::mousedown', e);
-    const isdesktop = this.platform.is('mobile');
+    const isdesktop = this.platform.is('desktop');
     if (!isdesktop) {
       return;
     }
-    this.longPressTimer = setTimeout(() => {
-      let x = e.clientX + 10; //x position within the element.
-      let y = e.clientY + 10;
-      this.createTooltipPopup(x, y);
-    }, this.longPressDelay);
   }
 
   @HostListener('pointerdown', ['$event']) onPointerDown(e) {
@@ -57,6 +50,7 @@ export class TooltipDirective implements OnDestroy {
     if (isDesktop) {
       return;
     }
+    if (this.longPressTimer) clearTimeout(this.longPressTimer);
     this.longPressTimer = setTimeout(() => {
       let x = e.clientX + 10;
       let y = e.clientY + 10;
@@ -81,13 +75,21 @@ export class TooltipDirective implements OnDestroy {
   }
 
   @HostListener('document: mousemove', ['$event']) onMouseMove(e) {
-    console.log('e:::::mousemove:', e);
+    const isDesktop = this.platform.is('desktop');
+    if (!isDesktop) {
+      return;
+    }
     const x = e.clientX + 10;
     const y = e.clientY + 10;
     if (this.myPopup) {
       this.myPopup.style.left = `${x}px`;
       this.myPopup.style.top = `${y}px`;
     }
+  }
+
+  @HostListener('pointerleave', ['$event'])
+  onPointerleave(event) {
+    if (this.longPressTimer) clearTimeout(this.longPressTimer);
   }
 
   @HostListener('contextmenu', ['$event'])
