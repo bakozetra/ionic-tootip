@@ -80,15 +80,15 @@ export class TooltipDirective implements OnDestroy {
     if (this.longPressTimer) clearTimeout(this.longPressTimer);
   }
 
-  // @HostListener('document: mousemove', ['$event']) onMouseMove(e) {
-  //   console.log('e:::::mousemove:', e);
-  //   const x = e.clientX + 10;
-  //   const y = e.clientY + 10;
-  //   if (this.myPopup) {
-  //     this.myPopup.style.left = `${x}px`;
-  //     this.myPopup.style.top = `${y}px`;
-  //   }
-  // }
+  @HostListener('document: mousemove', ['$event']) onMouseMove(e) {
+    console.log('e:::::mousemove:', e);
+    const x = e.clientX + 10;
+    const y = e.clientY + 10;
+    if (this.myPopup) {
+      this.myPopup.style.left = `${x}px`;
+      this.myPopup.style.top = `${y}px`;
+    }
+  }
 
   @HostListener('contextmenu', ['$event'])
   onRightClick(event) {
