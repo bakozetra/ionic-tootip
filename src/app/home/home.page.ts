@@ -34,9 +34,9 @@ export class HomePage {
   ngOnInit(): void {
     this.sentences = this.processText('');
     this.getText();
-    document.addEventListener('contextmenu', function (event) {
-      event.preventDefault();
-    });
+    // document.addEventListener('contextmenu', function (event) {
+    //   event.preventDefault();
+    // });
     this.translateConfigService
       .getTranslation('HOME.tooltipText')
       .toPromise()

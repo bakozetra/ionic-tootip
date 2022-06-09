@@ -92,6 +92,21 @@ export class TooltipDirective implements OnDestroy {
     if (this.longPressTimer) clearTimeout(this.longPressTimer);
   }
 
+   @HostListener("pointerover" , ['$event']) 
+   onPointerOver(event) {
+    // fixing iphone issue
+     document
+     .querySelectorAll('#tooltip-id')
+     .forEach((el) => el.remove());
+
+   }                                            
+
+  // @HostListener('pointerout', ['$event'])
+  // onpionterout(event) {
+  //   console.log('event pointout' , event)
+  //   if (this.longPressTimer) clearTimeout(this.longPressTimer);
+  // }
+
   @HostListener('contextmenu', ['$event'])
   onRightClick(event) {
     if (this.timer) clearTimeout(this.timer);
