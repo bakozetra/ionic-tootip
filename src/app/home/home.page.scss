@@ -5,14 +5,16 @@
   margin: auto;
   }
   #hove-button {
-    span {
-      display:inline-block;
-    }
-     span:hover {
-       background-color: aqua;
-     }
      .wordsSelect {
       color:rgb(12, 187, 187);
     }
   }
 }
+
+span {
+  display:inline-block;
+}
+ span:hover {
+   background-color: greenyellow;
+ }
+ 
