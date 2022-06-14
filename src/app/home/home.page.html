@@ -65,4 +65,13 @@
       </span>
     </ion-text>
   </div>
+
+  <div>
+    <app-button>
+      (mouseenter)="handlesentenceHover($event)"
+      (click)="onSelectSentences(s.id)" >
+    </app-button>
+    <app-image></app-image>
+    <app-label></app-label>
+  </div>
 </ion-content>

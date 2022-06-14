@@ -22,6 +22,7 @@ export class HomePage {
   tooltipText = '';
   selectedLanguage: string;
   desktopPlatform = this.platform.is('desktop');
+  buttonTooltip = '';
   constructor(
     private http: HttpClient,
     private translateConfigService: TranslateConfigService,
@@ -42,6 +43,19 @@ export class HomePage {
       .toPromise()
       .then((val) => {
         this.tooltipText = val;
+      });
+    this.translateConfigService
+      .getTranslation('BUTTON')
+      .toPromise()
+      .then((val) => {
+        console.log(val, 'vallll');
+        const test = val.map((text) => {
+          console.log('text::::::', text);
+          console.log('text.name::::::', text.button);
+          this.buttonTooltip = text.button;
+          // console.log('his.buttonTooltip::::::', this.buttonTooltip);
+        });
+        return test;
       });
   }
 
@@ -121,6 +135,20 @@ export class HomePage {
       .toPromise()
       .then((val) => {
         this.tooltipText = val;
+      });
+
+    this.translateConfigService.setLanguage(this.selectedLanguage);
+    this.translateConfigService
+      .getTranslation('BUTTON')
+      .toPromise()
+      .then((val) => {
+        const test = val.map((text) => {
+          console.log('text::::::', text);
+          console.log('text.name::::::', text.button);
+          this.buttonTooltip = text.button;
+          // console.log('his.buttonTooltip::::::', this.buttonTooltip);
+        });
+        return test;
       });
   }
 }

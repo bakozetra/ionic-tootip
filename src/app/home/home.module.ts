@@ -7,9 +7,9 @@ import { HomePage } from './home.page';
 import { HomePageRoutingModule } from './home-routing.module';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { TooltipDirective } from '../tooltip/tooltip.directive';
 import { TranslateModule } from '@ngx-translate/core';
-
+import { ComponentModule } from '../component/component.module';
+import { MyCommonModule } from '../tooltip/tooltip.module';
 @NgModule({
   imports: [
     CommonModule,
@@ -18,8 +18,10 @@ import { TranslateModule } from '@ngx-translate/core';
     HomePageRoutingModule,
     MatTooltipModule,
     NgbModule,
-    TranslateModule
+    TranslateModule,
+    MyCommonModule,
+    ComponentModule,
   ],
-  declarations: [HomePage,TooltipDirective]
+  declarations: [HomePage],
 })
 export class HomePageModule {}

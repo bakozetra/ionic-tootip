@@ -5,5 +5,12 @@
         "buttonText" : "bouton générer",
         "selectedTitle": "choisi",
         "tooltipText":"Compter les mots"
-    }
+    },
+    "BUTTON": [
+       { "button":"premier bouton"},
+        {"button":"deuxième bouton"},
+        {"button":"troisième bouton"},
+       { "button":"quatrieme bouton"}
+   ]
 }
+

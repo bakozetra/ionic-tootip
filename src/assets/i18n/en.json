@@ -4,6 +4,13 @@
         "buttonText" : "Generate text",
         "selectedTitle": "selected",
         "tooltipText":"Count words"
-    }
+    },
+    "BUTTON": [
+        { "button":"first button"},
+         {"button":"second button"},
+         {"button":"third button "},
+        { "button":"fourth button"}
+    ]
 }
+
 
