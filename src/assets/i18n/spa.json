@@ -5,5 +5,13 @@
         "buttonText" : "Generar texto",
         "selectedTitle": "Contar",
         "tooltipText":"cuenta las palabras"
-    }
+    },
+    "TOOLTIPSTEXT" : {
+        "buttonTooltip" : "botón",
+        "imageTooltip" : "Imagen",
+        "labelTooltip" : "etiqueta",
+        "tooltipText":"cuenta las palabras"
+     }
 }
+
+

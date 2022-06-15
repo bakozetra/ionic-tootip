@@ -4,5 +4,14 @@
         "buttonText" :"generere tekst",
         "selectedTitle": "valgt",
         "tooltipText":"Telle ord"
-    }
+    },
+    "TOOLTIPSTEXT" : {
+        "buttonTooltip" : "knapp",
+        "imageTooltip" : "Bilde",
+        "labelTooltip" : "merkelapp",
+        "tooltipText":"Telle ord"
+     }
 }
+
+
+

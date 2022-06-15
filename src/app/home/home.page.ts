@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { TranslateConfigService } from '../translate-config.service';
 import { PopoverController, Platform } from '@ionic/angular';
+import { RadiioButtonsComponent } from '../component/radiio-buttons/radiio-buttons.component';
 
 interface SentenceData {
   id: string;
@@ -15,6 +16,7 @@ interface SentenceData {
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
+  hero: 'spider man';
   dataText = '';
   sentences: SentenceData[] = [];
   wordsCount = 0;
@@ -23,11 +25,19 @@ export class HomePage {
   selectedLanguage: string;
   desktopPlatform = this.platform.is('desktop');
   buttonTooltip = '';
+  tooltipsTranslate = {
+    buttonTooltip: '',
+    imageTooltip: '',
+    labelTooltip: '',
+    tooltipText: '',
+  };
+
   constructor(
     private http: HttpClient,
     private translateConfigService: TranslateConfigService,
     public popoverCtrl: PopoverController,
-    public platform: Platform
+    public platform: Platform,
+    private sharedService: RadiioButtonsComponent
   ) {
     this.selectedLanguage = this.translateConfigService.getDefaultLanguage();
   }
@@ -39,23 +49,10 @@ export class HomePage {
       event.preventDefault();
     });
     this.translateConfigService
-      .getTranslation('HOME.tooltipText')
+      .getTranslation('TOOLTIPSTEXT')
       .toPromise()
       .then((val) => {
-        this.tooltipText = val;
-      });
-    this.translateConfigService
-      .getTranslation('BUTTON')
-      .toPromise()
-      .then((val) => {
-        console.log(val, 'vallll');
-        const test = val.map((text) => {
-          console.log('text::::::', text);
-          console.log('text.name::::::', text.button);
-          this.buttonTooltip = text.button;
-          // console.log('his.buttonTooltip::::::', this.buttonTooltip);
-        });
-        return test;
+        this.tooltipsTranslate = val;
       });
   }
 
@@ -131,24 +128,11 @@ export class HomePage {
   languageChanged() {
     this.translateConfigService.setLanguage(this.selectedLanguage);
     this.translateConfigService
-      .getTranslation('HOME.tooltipText')
+      .getTranslation('TOOLTIPSTEXT')
       .toPromise()
       .then((val) => {
-        this.tooltipText = val;
-      });
-
-    this.translateConfigService.setLanguage(this.selectedLanguage);
-    this.translateConfigService
-      .getTranslation('BUTTON')
-      .toPromise()
-      .then((val) => {
-        const test = val.map((text) => {
-          console.log('text::::::', text);
-          console.log('text.name::::::', text.button);
-          this.buttonTooltip = text.button;
-          // console.log('his.buttonTooltip::::::', this.buttonTooltip);
-        });
-        return test;
+        this.tooltipsTranslate = val;
+        this.sharedService.sendClickEvent();
       });
   }
 }

@@ -44,7 +44,7 @@
         <span
           (click)="onSelectSentences(s.id)"
           (mouseenter)="handlesentenceHover($event)"
-          [tooltip]="tooltipText"
+          [tooltip]="tooltipsTranslate.tooltipText"
           wordsNumber=" {{wordsCount}}"
           id="`${{s.id}}`"
           >{{s.value }}
@@ -59,19 +59,41 @@
         *ngIf="s.selected;"
         id="`${{s.id}}`"
         (mouseenter)="handlesentenceHover($event)"
-        [tooltip]="tooltipText"
+        [tooltip]="tooltipsTranslate.tooltipText"
         wordsNumber=" {{wordsCount}}"
         >{{s.value }}
       </span>
     </ion-text>
   </div>
-
-  <div>
-    <app-button>
+  <!-- <ion-button [tooltip]="tooltipsTranslate.buttonTooltip"
+    >{{"BUTTON.buttonName" | translate}}</ion-button
+  > -->
+  <div class="ui-elements">
+    <ion-title>Button</ion-title>
+    <app-button
+      [tooltip]="tooltipsTranslate.buttonTooltip"
+      buttonText="button from component"
+    >
       (mouseenter)="handlesentenceHover($event)"
       (click)="onSelectSentences(s.id)" >
     </app-button>
-    <app-image></app-image>
-    <app-label></app-label>
+
+    <ion-title>Image</ion-title>
+
+    <app-image
+      [tooltip]="tooltipsTranslate.imageTooltip"
+      imageUrl="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y"
+    >
+    </app-image>
+    <ion-title>Label</ion-title>
+
+    <app-label
+      [tooltip]="tooltipsTranslate.labelTooltip"
+      label="label text"
+    ></app-label>
+    <ion-title>drop boxes</ion-title>
+    <app-drop-boxes [tooltip]="'drop-boxes'"></app-drop-boxes>
+    <ion-title> Radio button</ion-title>
+    <app-radiio-buttons></app-radiio-buttons>
   </div>
 </ion-content>

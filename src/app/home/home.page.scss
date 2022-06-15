@@ -19,8 +19,18 @@ span {
  }
  
  .ui-elements {
+  width: 80%;
+  margin: auto;
    display: flex;
    align-items:flex-start;
    flex-direction: column;
    line-height: 3;
+   align-items: stretch ;
+   justify-content: space-around;
+
+   ion-title {
+     padding: 0;
+     color: blueviolet;
+     padding-top: 2rem;
+   }
  }

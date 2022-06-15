@@ -5,12 +5,17 @@
         "selectedTitle": "selected",
         "tooltipText":"Count words"
     },
-    "BUTTON": [
-        { "button":"first button"},
-         {"button":"second button"},
-         {"button":"third button "},
-        { "button":"fourth button"}
-    ]
+    "BUTTON": {
+       "buttonName" : "button",
+       "buttonTooltip": "first button"
+  },
+  "TOOLTIPSTEXT" : {
+     "buttonTooltip" : "button",
+     "imageTooltip" : "Image",
+     "labelTooltip" : "label",
+     "tooltipText":"Count words"
+  }
+   
 }
 
 

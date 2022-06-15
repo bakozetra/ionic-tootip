@@ -6,11 +6,16 @@
         "selectedTitle": "choisi",
         "tooltipText":"Compter les mots"
     },
-    "BUTTON": [
-       { "button":"premier bouton"},
-        {"button":"deuxième bouton"},
-        {"button":"troisième bouton"},
-       { "button":"quatrieme bouton"}
-   ]
+    "BUTTON": { 
+       "buttonName" : "bouton", 
+        "buttonTooltip":"premier bouton"
+    },
+    "TOOLTIPSTEXT" : {
+        "buttonTooltip" : "bouton",
+        "imageTooltip" : "Image",
+        "labelTooltip" : "étiquette",
+        "tooltipText" :"Compter les mots"
+     }
+      
 }
 

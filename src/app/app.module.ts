@@ -10,25 +10,32 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateConfigService } from './translate-config.service';
 export function LanguageLoader(http: HttpClient) {
- return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
+  return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
 }
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule ,HttpClientModule , 
-    BrowserAnimationsModule, 
+  imports: [
+    BrowserModule,
+    IonicModule.forRoot(),
+    AppRoutingModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
     TranslateModule.forRoot({
       loader: {
-      provide: TranslateLoader,
-      useFactory: (LanguageLoader),
-      deps: [HttpClient]
-      }
-      })],
+        provide: TranslateLoader,
+        useFactory: LanguageLoader,
+        deps: [HttpClient],
+      },
+    }),
+  ],
   providers: [
-    TranslateConfigService,{ 
-    provide: RouteReuseStrategy,
-    useClass: IonicRouteStrategy,
-  }],
+    TranslateConfigService,
+    {
+      provide: RouteReuseStrategy,
+      useClass: IonicRouteStrategy,
+    },
+  ],
 
   bootstrap: [AppComponent],
 })
