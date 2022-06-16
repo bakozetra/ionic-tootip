@@ -7,6 +7,6 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class ButtonComponent implements OnInit {
   @Input() buttonText: string;
-
+  @Input() buttonTextTooltip: string;
   ngOnInit() {}
 }

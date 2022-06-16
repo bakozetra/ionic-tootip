@@ -30,14 +30,18 @@ export class HomePage {
     imageTooltip: '',
     labelTooltip: '',
     tooltipText: '',
+    dropTooltipTextTop: '',
+    dropTooltipTextPet: '',
+    radiofriensTooltipText: '',
+    radiofamilyTooltipText: '',
+    radioenemiesTooltipText: '',
   };
 
   constructor(
     private http: HttpClient,
     private translateConfigService: TranslateConfigService,
     public popoverCtrl: PopoverController,
-    public platform: Platform,
-    private sharedService: RadiioButtonsComponent
+    public platform: Platform
   ) {
     this.selectedLanguage = this.translateConfigService.getDefaultLanguage();
   }
@@ -132,7 +136,6 @@ export class HomePage {
       .toPromise()
       .then((val) => {
         this.tooltipsTranslate = val;
-        this.sharedService.sendClickEvent();
       });
   }
 }

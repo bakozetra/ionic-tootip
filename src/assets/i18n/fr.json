@@ -14,8 +14,16 @@
         "buttonTooltip" : "bouton",
         "imageTooltip" : "Image",
         "labelTooltip" : "étiquette",
-        "tooltipText" :"Compter les mots"
+        "tooltipText" :"Compter les mots",
+        "dropTooltipTextTop":"Choisissez la garniture",
+        "dropTooltipTextPet":"Choisissez un animal de compagnie",
+        "radiofriensTooltipText": "Amis",
+        "radiofamilyTooltipText": "Famille",
+        "radioenemiesTooltipText": "Ennemis"
      }
       
 }
+
+
+
 

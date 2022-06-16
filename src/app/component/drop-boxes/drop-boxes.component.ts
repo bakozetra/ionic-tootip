@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-drop-boxes',
@@ -6,9 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./drop-boxes.component.scss'],
 })
 export class DropBoxesComponent implements OnInit {
+  @Input() dropboxesTooltipTextTop: string;
+  @Input() dropboxesTooltipTextPet: string;
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {}
-
 }

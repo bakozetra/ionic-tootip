@@ -1,5 +1,5 @@
 <ion-list>
-  <ion-item>
+  <ion-item [tooltip]="dropboxesTooltipTextTop">
     <ion-label>Toppings</ion-label>
     <ion-select multiple="true" cancelText="Nah" okText="Okay!">
       <ion-select-option value="bacon">Bacon</ion-select-option>
@@ -14,8 +14,7 @@
       <ion-select-option value="Spinach">Spinach</ion-select-option>
     </ion-select>
   </ion-item>
-
-  <ion-item>
+  <ion-item [tooltip]="dropboxesTooltipTextPet">
     <ion-label>Pets</ion-label>
     <ion-select multiple="true" [value]="['bird', 'dog']">
       <ion-select-option value="bird">Bird</ion-select-option>

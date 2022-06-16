@@ -13,9 +13,24 @@
      "buttonTooltip" : "button",
      "imageTooltip" : "Image",
      "labelTooltip" : "label",
-     "tooltipText":"Count words"
-  }
-   
+     "tooltipText":"Count words",
+     "dropTooltipTextTop":"Choose topping",
+     "dropTooltipTextPet":"Choose pet",
+     "radiofriensTooltipText": "Friends",
+     "radiofamilyTooltipText": "Family",
+     "radioenemiesTooltipText": "Enemies"
 }
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
