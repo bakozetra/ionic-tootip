@@ -2,8 +2,7 @@
     "HOME": {
         "title": "Ordtelling med verktøytips",
         "buttonText" :"generere tekst",
-        "selectedTitle": "valgt",
-        "tooltipText":"Telle ord"
+        "selectedTitle": "valgt"
     },
     "TOOLTIPSTEXT" : {
         "buttonTooltip" : "knapp",

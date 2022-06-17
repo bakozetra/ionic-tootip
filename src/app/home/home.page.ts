@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { TranslateConfigService } from '../translate-config.service';
 import { PopoverController, Platform } from '@ionic/angular';
-import { RadiioButtonsComponent } from '../component/radiio-buttons/radiio-buttons.component';
 
 interface SentenceData {
   id: string;
@@ -21,7 +20,6 @@ export class HomePage {
   sentences: SentenceData[] = [];
   wordsCount = 0;
   followTooltipVisible = false;
-  tooltipText = '';
   selectedLanguage: string;
   desktopPlatform = this.platform.is('desktop');
   buttonTooltip = '';

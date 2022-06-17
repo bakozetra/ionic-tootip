@@ -3,13 +3,9 @@
     "HOME": {
         "title": "Nombre de mots avec info-bulle",
         "buttonText" : "bouton générer",
-        "selectedTitle": "choisi",
-        "tooltipText":"Compter les mots"
+        "selectedTitle": "choisi"
     },
-    "BUTTON": { 
-       "buttonName" : "bouton", 
-        "buttonTooltip":"premier bouton"
-    },
+
     "TOOLTIPSTEXT" : {
         "buttonTooltip" : "bouton",
         "imageTooltip" : "Image",

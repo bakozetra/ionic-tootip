@@ -43,6 +43,10 @@ export class TooltipDirective implements OnDestroy {
     if (!isdesktop) {
       return;
     }
+    if (this.timer) clearTimeout(this.timer);
+    if (this.myPopup) {
+      this.myPopup.remove();
+    }
   }
 
   @HostListener('pointerdown', ['$event']) onPointerDown(e) {

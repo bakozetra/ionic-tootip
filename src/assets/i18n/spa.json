@@ -3,8 +3,7 @@
     "HOME": {
         "title": "Recuento de palabras con información sobre herramientas",
         "buttonText" : "Generar texto",
-        "selectedTitle": "Contar",
-        "tooltipText":"cuenta las palabras"
+        "selectedTitle": "Contar"
     },
     "TOOLTIPSTEXT" : {
         "buttonTooltip" : "botón",

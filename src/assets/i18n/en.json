@@ -2,13 +2,9 @@
     "HOME": {
         "title": "Word count with tooltip",
         "buttonText" : "Generate text",
-        "selectedTitle": "selected",
-        "tooltipText":"Count words"
+        "selectedTitle": "selected"
     },
-    "BUTTON": {
-       "buttonName" : "button",
-       "buttonTooltip": "first button"
-  },
+
   "TOOLTIPSTEXT" : {
      "buttonTooltip" : "button",
      "imageTooltip" : "Image",
