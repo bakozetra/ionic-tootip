@@ -8,15 +8,16 @@
      .wordsSelect {
       color:rgb(12, 187, 187);
     }
+    span:hover {
+      background-color: greenyellow;
+    }
   }
 }
 
 span {
   display:inline-block;
 }
- span:hover {
-   background-color: greenyellow;
- }
+
  
  .ui-elements {
   width: 80%;

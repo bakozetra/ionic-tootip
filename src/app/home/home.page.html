@@ -36,6 +36,8 @@
         *ngIf="s.selected; else normal"
         style="color: rgb(12, 187, 187)"
         (mouseenter)="handlesentenceHover($event)"
+        [tooltip]="tooltipsTranslate.tooltipText"
+        wordsNumber=" {{wordsCount}}"
         (click)="onSelectSentences(s.id)"
         id="`${{s.id}}`"
         >{{s.value }}
@@ -55,14 +57,7 @@
       <h2>{{ "HOME.selectedTitle" | translate }} :</h2>
     </ion-text>
     <ion-text *ngFor="let s of sentences">
-      <span
-        *ngIf="s.selected;"
-        id="`${{s.id}}`"
-        (mouseenter)="handlesentenceHover($event)"
-        [tooltip]="tooltipsTranslate.tooltipText"
-        wordsNumber=" {{wordsCount}}"
-        >{{s.value }}
-      </span>
+      <span *ngIf="s.selected;" id="`${{s.id}}`">{{s.value }} </span>
     </ion-text>
   </div>
   <div class="ui-elements">
